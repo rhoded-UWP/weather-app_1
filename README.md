@@ -1,5 +1,7 @@
 # Weather App Starter (APC 440, Modules 8-10)
 
+Coding by Dan Rhode as part of the APC440 course
+
 This is the starting point for the React weather app you will build over
 Modules 8, 9, and 10. It was created with Vite (React, JavaScript) and
 includes a few files you will need.

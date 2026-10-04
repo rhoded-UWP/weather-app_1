@@ -1,17 +1,39 @@
-// Starter App for the APC 440 Weather App.
-// In Module 8 you will replace this with a component-based weather interface
-// built from src/data/mockWeather.json. Read CLAUDE.md before you start.
+import { useState } from 'react'
+import mockWeather from './data/mockWeather.json'
+import CitySelector from './components/CitySelector.jsx'
+import CurrentConditions from './components/CurrentConditions.jsx'
+import ForecastList from './components/ForecastList.jsx'
 
+// Module 8: show sample data from a local JSON file (no fetching).
+// Units are always Imperial for now.
 export default function App() {
+  const locations = mockWeather.locations
+
+  // State holds only the id. The full location object is looked up below,
+  // so the data lives in one place and can't get out of sync.
+  const [selectedId, setSelectedId] = useState(locations[0].id)
+  const location = locations.find((loc) => loc.id === selectedId)
+  const units = 'imperial'
+
   return (
-    <main className="starter">
+    <main className="app">
       <h1>Weather App</h1>
       <p className="sample-badge">Sample data</p>
-      <p>
-        Your React weather interface will go here. If you can see this page on
-        your Render URL, your toolchain works: VS Code, GitHub, and Render are
-        connected.
-      </p>
+
+      <CitySelector
+        locations={locations}
+        selectedId={selectedId}
+        onSelect={setSelectedId}
+      />
+
+      <CurrentConditions
+        name={location.name}
+        region={location.admin1}
+        current={location.forecast.current}
+        units={units}
+      />
+
+      <ForecastList daily={location.forecast.daily} units={units} />
     </main>
   )
 }

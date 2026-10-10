@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import LocationSearch from './components/LocationSearch.jsx'
+import StatusMessage from './components/StatusMessage.jsx'
 import CurrentConditions from './components/CurrentConditions.jsx'
 import ForecastList from './components/ForecastList.jsx'
 import Attribution from './components/Attribution.jsx'
@@ -64,6 +65,8 @@ export default function App() {
       <h1>Weather App</h1>
 
       <LocationSearch onSearch={handleSearch} disabled={isBusy} />
+
+      <StatusMessage status={status} />
 
       {status === 'success' && (
         <>

@@ -192,6 +192,18 @@ h2 {
   color: var(--accent);
 }
 
+/* ---------- Status message ---------- */
+.status-message {
+  margin: 0 0 1.5rem;
+  color: var(--ink-soft);
+}
+
+/* On success the message is empty; drop its space so the weather sits
+   right under the form. */
+.status-message:empty {
+  margin: 0;
+}
+
 /* ---------- Attribution ---------- */
 .attribution {
   margin: 1.5rem 0 0;
